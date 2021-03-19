@@ -1,0 +1,10 @@
+{
+  "name": "camaloon-home-assignment-front",
+  "version": "1.0.0",
+  "description": "Home assignment for the job application process at Camaloon.",
+  "main": "src/index.js",
+  "repository": "git@github.com:Janchorizo/camaloon-home-assignment-front.git",
+  "author": "Janchorizo <jancho@usal.es>",
+  "license": "MIT",
+  "private": false
+}

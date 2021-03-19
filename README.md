@@ -1,5 +1,6 @@
 ## camaloon-home-assignment-front
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2c9b9a3a-2fd4-40be-9521-6b82a9634bfa/deploy-status)](https://app.netlify.com/sites/camaloon-home-assignment/deploys)
+
 Repository for the web application implemented for the job application at
 [Camaloon](https://camaloon.com/).
 

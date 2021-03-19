@@ -1,4 +1,5 @@
 ## camaloon-home-assignment-front
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2c9b9a3a-2fd4-40be-9521-6b82a9634bfa/deploy-status)](https://app.netlify.com/sites/camaloon-home-assignment/deploys)
 Repository for the web application implemented for the job application at
 [Camaloon](https://camaloon.com/).
 
@@ -27,7 +28,7 @@ in the dist folder).
 
 #### Online
 The app is being deployed using [Netlify](https://www.netlify.com/) from the
-master branch. You can access it at [https://x.x.x](https://x.x.x).
+master branch. You can access it at [https://camaloon-home-assignment.netlify.app/](https://camaloon-home-assignment.netlify.app/).
 
 ### Collaborating
 If you want to collaborate in the project, feel free to clone the repo and create

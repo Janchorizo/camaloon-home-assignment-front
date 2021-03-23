@@ -9,6 +9,7 @@
   box-shadow: none;
   border-radius: 0;
   cursor: pointer;
+  height: calc(40px + 1em);
 }
 .button:hover{
   background-color: var(--light);

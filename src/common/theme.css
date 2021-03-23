@@ -16,6 +16,9 @@ html {
     --red: #FF6B6B;
 }
 
+p, span, a{
+    font-size: var(--text-medium);
+}
 .text-small{
     font-size: var(--text-small);
 }

@@ -9,7 +9,7 @@ import style from './style.module.css';
  * @component
  * @return {React.Component}
  */
-export default function App({title=null, children}) {
+export default function Section({title=null, children}) {
   const isValidTitle = title != null && title.toString().length > 0;
   const titleElement = isValidTitle ? <h1>{title.toString()}</h1> : '';
 
@@ -21,7 +21,7 @@ export default function App({title=null, children}) {
   </div>;
 }
 
-App.propTypes = {
+Section.propTypes = {
   title: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),

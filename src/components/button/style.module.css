@@ -1,0 +1,28 @@
+.button{
+  margin: 0;
+  display: inline-block;
+  padding: .5em 1.1em;
+  text-align: center;
+  color: var(--dark);
+  background-color: var(--white);
+  border: solid 1px var(--text-muted);
+  box-shadow: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+.button:hover{
+  background-color: var(--light);
+  border: solid 1px var(--text-muted);
+  box-shadow: none;
+}
+.filled{
+  font-weight: bold;
+  color: var(--white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.filled:hover{
+  background-color: var(--primary);
+  opacity: .9;
+  border-color: var(--primary);
+}

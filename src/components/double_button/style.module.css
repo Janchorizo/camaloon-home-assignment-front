@@ -1,0 +1,10 @@
+.doubleButton{
+  display: inline-flex;  
+}
+.vertical{
+  flex-direction: column;
+  align-items: center;
+}
+.doubleButton span{
+  padding: var(--space-small);
+}

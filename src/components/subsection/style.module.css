@@ -1,0 +1,13 @@
+.subsection h1{
+  margin: 0 0 calc(var(--space-small) / 2) 0;
+  padding: 0;
+  font-size: var(--text-medium);
+  font-weight: bold;
+  color: var(--text-muted);
+}
+.subsection > div,
+.subsection > div > *:nth-child(1){
+  margin-top: 0;
+  padding-top: 0;
+  font-size: var(--text-small);
+}

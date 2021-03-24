@@ -5,3 +5,4 @@ export {default as PageLayout} from './page_layout';
 export {default as Button} from './button';
 export {default as DoubleButton} from './double_button';
 export {default as TwoThirdsLayout} from './two_thirds_layout';
+export {default as ItemList} from './itemlist';

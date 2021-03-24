@@ -33,7 +33,9 @@ export default function ProductPage() {
   return <PageLayout headerBgColor={'var(--dark)'}
       footerBgColor={'var(--light)'}
       id={style.page}>
-    <div></div>
+    <div id={style.header}>
+      <Link to='/'>Online Bike Store</Link>
+    </div>
     <div id={style['category-links']}>
       <Link to='/product/bikes/2134'>Bikes</Link>
       <Link to='/product/components/215'>Bike Components</Link>

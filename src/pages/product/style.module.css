@@ -3,6 +3,21 @@
     display: block;
     height: var(--space-medium);
 }
+#header{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+}
+#header > *{
+    padding-bottom: var(--space-medium);
+    color: var(--white);
+}
+#header a{
+    font-size: var(--text-xlarge);
+    font-weight: medium;
+    text-decoration: none;
+}
 #product-img{
     display: block;
     width: 100%;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 // internal
 import style from './style.module.css';
 import {
@@ -24,7 +24,9 @@ export default function HomePage() {
   return <PageLayout headerBgColor={'var(--dark)'}
     footerBgColor={'var(--light)'}
     id={style.page}>
-    <div></div>
+    <div id={style.header}>
+      <Link to='/'>Online Bike Store</Link>
+    </div>
     <h1>Online Bike Store</h1>
     <h2>Your local store now in the web</h2>
     <img id={style.hero}/>

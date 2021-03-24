@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: 100px 1fr 100px;
   grid-template-rows: 100px 1fr 100px;
+  margin: 0 var(--space-small);
 }
 .header{
   grid-row: 1 / 2;
@@ -53,6 +54,7 @@
 }
 @media only screen and (min-width: 1200px){
   .pageLayout{
+    margin: 0;
     grid-template-columns: 1fr 1024px 1fr;
   }
 }

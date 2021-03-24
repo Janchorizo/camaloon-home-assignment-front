@@ -2,8 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
-} from "react-router-dom";
+  Route,
+} from 'react-router-dom';
 // internal
 import {
   Home,
@@ -35,5 +35,5 @@ export default function App() {
         <Home />
       </Route>
     </Switch>
-  </Router>
+  </Router>;
 }

@@ -7,3 +7,4 @@ export {default as DoubleButton} from './double_button';
 export {default as TwoThirdsLayout} from './two_thirds_layout';
 export {default as ItemList} from './itemlist';
 export {default as TabSelector} from './tab_selector';
+export {default as TabContainer} from './tab_container';

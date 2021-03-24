@@ -2,7 +2,7 @@ import React from 'react';
 import {mount} from 'enzyme';
 // internal
 import ItemList from './component.js';
-import {any} from 'prop-types';
+
 
 test('Renders the same prop children in separate divs', () => {
   let children = [];

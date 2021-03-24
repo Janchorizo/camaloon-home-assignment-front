@@ -2,7 +2,7 @@
   min-height: 100%;
   display: grid;
   grid-template-columns: 100px 1fr 100px;
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows: 100px 1fr auto;
   margin: 0 var(--space-small);
 }
 .header{

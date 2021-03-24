@@ -30,6 +30,7 @@ export default function PageLayout({
   bodyBgColor=defaultColor,
   footerBgColor=defaultColor,
   children,
+  ...extraProps
 }) {
   const headerStyle = {backgroundColor: (isValidColor(headerBgColor) ?
     headerBgColor :
@@ -47,7 +48,7 @@ export default function PageLayout({
     footer = body.length > 1 ? body.pop() : '';
   }
 
-  return <div className={style.pageLayout}>
+  return <div className={style.pageLayout} {...extraProps}>
     <div style={headerStyle} className={style.header}>{header}</div>
     <div style={bodyStyle} className={style.body}>{body}</div>
     <div style={footerStyle} className={style.footer}>{footer}</div>

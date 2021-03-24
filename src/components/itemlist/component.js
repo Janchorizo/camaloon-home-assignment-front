@@ -36,7 +36,7 @@ export default function ItemList({
   ].join(' ');
 
   return <div className={cssClasses}>
-    {children?.map?.((c, i) => <div key={i}>{c}</div>)}
+    {children?.map?.((c, i) => <div key={i}>{c}</div>) || children}
   </div>;
 }
 

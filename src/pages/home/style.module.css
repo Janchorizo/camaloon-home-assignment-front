@@ -1,1 +1,54 @@
-.page{}
+#page{
+    text-align: justify;
+}
+.spacer{
+    display: block;
+    height: var(--space-medium);
+}
+#hero{
+    display: block;
+    width: 100%;
+    height: calc(4 * var(--space-large));
+    background-color: var(--text-muted);
+}
+#hero-link{
+    display: block;
+    position: relative;
+    height: var(--space-medium);
+}
+#hero-link button{
+    position: absolute;
+    top: calc(0px - (var(--space-medium) / 2));
+    left: calc((100% / 2) - 100px);
+}
+#page #aside{
+    text-align: center;
+}
+#aside img,
+#product-carrousel > div img{
+    display: block;
+    width: calc(4 * var(--space-medium));
+    height: calc(4 * var(--space-medium));
+    border-radius: 50%;
+    background-color: var(--red);
+    margin: 0 auto;
+}
+#product-carrousel{
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+}
+#product-carrousel > div{
+    flex-shrink: 0;
+    text-align: center;
+    width: 300px;
+    margin-right: var(--space-medium);
+}
+#product-carrousel > div img{
+    display: block;
+    width: calc(2 * var(--space-medium));
+    height: calc(2 * var(--space-medium));
+    border-radius: 50%;
+    background-color: var(--light);
+    margin: 0 auto;
+}

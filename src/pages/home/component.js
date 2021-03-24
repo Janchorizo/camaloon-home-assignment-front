@@ -1,16 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useHistory} from 'react-router-dom';
 // internal
 import style from './style.module.css';
 import {
   Button,
-  DoubleButton,
   Section,
   Subsection,
   PageLayout,
   TwoThirdsLayout,
   ItemList,
-  TabSelector,
-  TabContainer,
   CustomizationOptionDesc,
 } from 'components';
 
@@ -21,146 +19,164 @@ import {
  * @return {React.Component}
  */
 export default function HomePage() {
-  const [selectedTab, setTab] = useState(0);
-  const tabLabels = [
-    'Product Type Characteristics',
-    'Product Entries',
-  ];
+  const history = useHistory();
 
-  return <PageLayout headerBgColor={'var(--dark)'}>
-    <div>
-      <h1 style={{color: 'var(--light)'}}>Camaloon home assignment</h1>
-      <h2 style={{color: 'var(--light)'}}>Alejandro Rodríguez Díaz</h2>
+  return <PageLayout headerBgColor={'var(--dark)'}
+    footerBgColor={'var(--light)'}
+    id={style.page}>
+    <div></div>
+    <h1>Online Bike Store</h1>
+    <h2>Your local store now in the web</h2>
+    <img id={style.hero}/>
+    <div id={style['hero-link']}>
+      <Button textSizeClass='text-large'
+        filled={true}
+        onClick={() => {
+          history.push('/product');
+        }}>
+        See the latest bikes
+      </Button>
     </div>
+    <div className={style.spacer}/>
     <TwoThirdsLayout>
-      <TwoThirdsLayout><span>hola</span></TwoThirdsLayout>
-      <Section title='Description'>
-        <span/>
-        <Button>hola</Button>
-        <Button textSizeClass='text-large' filled={true}>hola</Button>
-        <Button textSizeClass='text-large'>hola</Button>
-        <p>
-              This is the product description that the owner would write to attract
-              people to the said thing. This same description could apply to some other
-              model of the same product, or a custom one. It is component agnostic and
-              long enough to not make the page feel a bit empty.
-        </p>
-        <DoubleButton label1='Add factory model to chart'
-          onClick1={() => {
-            console.log('Added factory model');
-          }}
-          label2='Customize your own product'
-          onClick2={() => {
-            console.log('Customizing model');
-          }}
-          verticalLayout={true}
-          textSizeClass='text-large'/>
-      </Section>
-      <Section title='Description'>
-        <TabSelector selected={selectedTab}
-          labels={tabLabels}
-          onChange={(e) => setTab(e.target.value)}/>
-        <TabContainer selectedIdx={selectedTab}>
-          <Subsection title='Product type characteristics'>
-            <p>
-                roduct description that the owner would write to attract
-                people to the said thing. This same description could apply to some other
-                model of the same product, or a custom one.
-            </p>
-            <ItemList>
-              <CustomizationOptionDesc name='Wheel size'
-                desc={`
-                    Small with fast response or large to better keep the momentum,
-                    customize your bike with the wheel size that better fits your
-                    needs (the extra cost includes the wheel price difference and
-                    the cost of a larger frame and fork to accomodate the wheel).
-                  `}/>
-              <CustomizationOptionDesc name='Frame color'
-                desc={`
-                    We use the best painting proces possible, ensuring that
-                    the finnish is perfect. With an extra aouter clear coat
-                    we can achieve a 100% of surface coverage which will not
-                    only look good, but protect the frame from rust.
-                  `}/>
-              <CustomizationOptionDesc name='Seat type'
-                desc={`
-                    Choose between our superior seats; go for a traditional
-                    v-shaped seat or try the newest telescopic seat which allows
-                    retracting it for better maneuverability.
-                  `}/>
-              <CustomizationOptionDesc name='Gears'
-                desc={`
-                    Go for the lightest bike and the easiest maintenance with a single
-                    gear transmision, a more flexible single plate one, or a traditional
-                    three-plate combination.
-                  `}/>
-            </ItemList>
-          </Subsection>
-          <Subsection title='Product entries'>
-            <p>
-                roduct description that the owner would write to attract
-                people to the said thing. This same description could apply to some other
-                model of the same product, or a custom one.
-            </p>
-            <DoubleButton label1='Add factory model to chart'
-              onClick1={() => {
-                console.log('Added factory model');
-              }}
-              label2='Customize your own product'
-              onClick2={() => {
-                console.log('Customizing model');
-              }}/>
-          </Subsection>
-        </TabContainer>
-      </Section>
-      <Section>
-        <p>
-              This is the product description that the owner would write to attract
-              people to the said thing. This same description could apply to some other
-              model of the same product, or a custom one. It is component agnostic and
-              long enough to not make the page feel a bit empty.
-        </p>
-        <DoubleButton label1='Add a value'
-          onClick1={() => {
-            console.log('Added factory model');
-          }}
-          label2='List the existing choices'
-          onClick1={() => {
-            console.log('Customizing model');
-          }}/>
-      </Section>
-      <Subsection title='Description'>
-
-
-      </Subsection>
-      <Section title='The product'>
-        <ItemList useSeparator={true} stripped={true} gapSizeClass='--space-medium'>
-          <p>
-              This is the product description that the owner would write to attract
-              people to the said thing. This same description could apply to some other
-              model of the same product, or a custom one. It is component agnostic and
-              long enough to not make the page feel a bit empty.
-          </p>
-          <ol>
-            <li>One characteristic</li>
-            <li>Another characteristic</li>
-            <li>Such characteristic</li>
-          </ol>
-          <DoubleButton label1='Add factory model to chart'
-            onClick1={() => {
-              console.log('Added factory model');
-            }}
-            label2='Customize your own product'
-            onClick2={() => {
-              console.log('Customizing model');
-            }}
-            verticalLayout={true}
-            textSizeClass='text-large'/>
+      <div>
+        <ItemList>
+          <CustomizationOptionDesc name='The same as if you came here'
+            desc={`
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of
+            type and scrambled it to make a type specimen book. 
+              `}/>
+          <CustomizationOptionDesc name='Catalogue updated on a daily basis'
+            desc={`
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of
+            type and scrambled it to make a type specimen book.
+              `}/>
         </ItemList>
+      </div>
+      <div id={style.aside}>
+        <img/>
+        <Section>
+          <br/>
+          <p>
+            We are happy to announce an additional discount to celebrate the
+            new page.
+          </p>
+          <br/>
+          <Button onClick={() => {
+            history.push('/product');
+          }}>
+            Have a look at the discounted bikes
+          </Button>
+        </Section>
+      </div>
+    </TwoThirdsLayout>
+    <div className={style.spacer}/>
+    <Section title='Freshly arrived at the wharehouse'>
+      <p>
+        The newest bikes of the season. The best trail, downhill and road bikes.
+      </p>
+      <div id={style['product-carrousel']}>
+        <div>
+          <img/>
+          <Subsection title='Bike 1'>
+            <p>
+              We are happy to announce an additional discount to celebrate the
+              new page.
+            </p>
+            <br/>
+            <Button onClick={() => {
+              history.push('/product');
+            }}>
+              Have a look at the discounted bikes
+            </Button>
+          </Subsection>
+        </div>
+        <div>
+          <img/>
+          <Subsection title='Bike 1'>
+            <p>
+              We are happy to announce an additional discount to celebrate the
+              new page.
+            </p>
+            <br/>
+            <Button onClick={() => {
+              history.push('/product');
+            }}>
+              Have a look at the discounted bikes
+            </Button>
+          </Subsection>
+        </div>
+        <div>
+          <img/>
+          <Subsection title='Bike 1'>
+            <p>
+              We are happy to announce an additional discount to celebrate the
+              new page.
+            </p>
+            <br/>
+            <Button onClick={() => {
+              history.push('/product');
+            }}>
+              Have a look at the discounted bikes
+            </Button>
+          </Subsection>
+        </div>
+        <div>
+          <img/>
+          <Subsection title='Bike 1'>
+            <p>
+              We are happy to announce an additional discount to celebrate the
+              new page.
+            </p>
+            <br/>
+            <Button onClick={() => {
+              history.push('/product');
+            }}>
+              Have a look at the discounted bikes
+            </Button>
+          </Subsection>
+        </div>
+        <div>
+          <img/>
+          <Subsection title='Bike 1'>
+            <p>
+              We are happy to announce an additional discount to celebrate the
+              new page.
+            </p>
+            <br/>
+            <Button onClick={() => {
+              history.push('/product');
+            }}>
+              Have a look at the discounted bikes
+            </Button>
+          </Subsection>
+        </div>
+      </div>
+    </Section>
+    <div className={style.spacer}/>
+    <TwoThirdsLayout>
+      <Section title='COVID-19 and the shop'>
+        As you know COVID-19 is making the shipping process a bit more lengthy
+        for locations autside of... ...lorem ipsum dummy text of the printing and 
+        typesetting
+        industry. Lorem Ipsum has been the industry standard dummy text
+        ever since the 1500s, when an unknown printer took a galley of
+        type and scrambled it to make a type specimen book.
       </Section>
     </TwoThirdsLayout>
+    <div className={style.spacer}/>
     <span>
-        Contact me at: <a href='mailto:jancho@usal.es'>jancho@usal.es</a>
+      <h3>Camaloon Home Assignment</h3>
+      <h4>This was done as part of a job application</h4>
+      <p>
+      Alejandro Rodríguez Díaz
+        <br/>
+      Contact me at: <a href='mailto:jancho@usal.es'>jancho@usal.es</a>
+      </p>
     </span>
   </PageLayout>;
 }

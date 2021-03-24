@@ -1,4 +1,7 @@
 ## camaloon-home-assignment-front
+
+[![Unit tests](https://github.com/Janchorizo/camaloon-home-assignment-front/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/Janchorizo/camaloon-home-assignment-front/actions/workflows/unit-tests.yml)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2c9b9a3a-2fd4-40be-9521-6b82a9634bfa/deploy-status)](https://app.netlify.com/sites/camaloon-home-assignment/deploys)
 
 Repository for the web application implemented for the job application at

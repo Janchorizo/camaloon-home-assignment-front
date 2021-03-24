@@ -9,11 +9,11 @@ import style from './style.module.css';
  * @component
  * @return {React.Component}
  */
-export default function Subsection({title=null, children}) {
+export default function Subsection({title=null, children, ...extraProps}) {
   const isValidTitle = title != null && title.toString().length > 0;
   const titleElement = isValidTitle ? <h1>{title.toString()}</h1> : '';
 
-  return <div className={style.subsection}>
+  return <div className={style.subsection} {...extraProps}>
     {titleElement}
     <div>
       {children}

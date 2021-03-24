@@ -8,3 +8,4 @@ export {default as TwoThirdsLayout} from './two_thirds_layout';
 export {default as ItemList} from './itemlist';
 export {default as TabSelector} from './tab_selector';
 export {default as TabContainer} from './tab_container';
+export {default as CustomizationOptionDesc} from './customization_option_desc';

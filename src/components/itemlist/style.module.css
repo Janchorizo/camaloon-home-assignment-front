@@ -1,0 +1,42 @@
+.itemList{
+  display: flex;
+  flex-direction: column;
+}
+.itemList > div{
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.stripped > div:nth-child(2n){
+  background-color: var(--light);
+}
+.withSeparator > div{
+  border-bottom: solid 1px var(--text-muted);
+}
+.gap--space-small > div{
+  padding-bottom: calc(var(--space-small) / 2);
+  margin-bottom: calc(var(--space-small) / 2);
+}
+.gap--space-medium > div{
+  padding-bottom: calc(var(--space-medium) / 2);
+  margin-bottom: calc(var(--space-medium) / 2);
+}
+.gap--space-large > div{
+  padding-bottom: calc(var(--space-large) / 2);
+  margin-bottom: calc(var(--space-large) / 2);
+}
+.padding--space-small{
+  padding: var(--space-small);
+}
+.padding--space-medium{
+  padding: var(--space-medium);
+}
+.padding--space-large{
+  padding: var(--space-large);
+}
+.withSeparator > div:last-child{
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}

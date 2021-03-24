@@ -1,0 +1,52 @@
+html {
+    --text-small: 14px;
+    --text-medium: 16px;
+    --text-large: 18px;
+    --text-xlarge: 24px;
+    --space-small: 20px;
+    --space-medium: 40px;
+    --space-large: 70px;
+
+    --light: #E6EBEF;
+    --dark: #292F36;
+    --primary: #4ECDC4;
+    --text-muted: #BDBDBD;
+    --white: #F3F5F7;
+    --yellow: #FFe66D;
+    --red: #FF6B6B;
+}
+html *{
+    font-family: 'Roboto', Helvetica, sans-serif;
+}
+
+p, span, a{
+    font-size: var(--text-medium);
+}
+.text-small{
+    font-size: var(--text-small);
+}
+.text-medium{
+    font-size: var(--text-medium);
+}
+.text-large{
+    font-size: var(--text-large);
+}
+.text-xlarge{
+    font-size: var(--text-xlarge);
+}
+
+* {
+    color: var(--dark);
+}
+.text-light{
+    color: var(--light);
+}
+.text-dark{
+    color: var(--dark);
+}
+.text-primary{
+    color: var(--primary);
+}
+.text-text-muted{
+    color: var(--text-muted);
+}

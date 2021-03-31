@@ -142,4 +142,49 @@ export const shop_api = {
       ({product_id, option_name}) => `/shop/products/${product_id}/option/${option_name}/choices`
     )
   ),
-}
+};
+
+export const admin_api = {
+  get_categories: create_endpoint(
+    get,
+    create_url_builder(
+      [],
+      () => `/admin/categories`
+    )
+  ),
+  get_category_products: create_endpoint(
+    get,
+    create_url_builder(
+      ['category_id'],
+      ({category_id}) => `/admin/categories/${category_id}/products`
+    )
+  ),
+  get_category_options: create_endpoint(
+    get,
+    create_url_builder(
+      ['category_id'],
+      ({category_id}) => `/admin/categories/${category_id}/options`
+    )
+  ),
+  get_category_option: create_endpoint(
+    get,
+    create_url_builder(
+      ['category_id', 'option_id'],
+      ({category_id, option_id}) => `/admin/categories/${category_id}/options/${option_id}`
+    )
+  ),
+  get_category_option_choices: create_endpoint(
+    get,
+    create_url_builder(
+      ['category_id', 'option_id'],
+      ({category_id, option_id}) => `/admin/categories/${category_id}/options/${option_id}/choices`
+    )
+  ),
+  get_category_option_choice: create_endpoint(
+    get,
+    create_url_builder(
+      ['category_id', 'option_id', 'choice_id'],
+      ({category_id, option_id, choice_id}) => `/admin/categories/${category_id}/options/${option_id}/choices/${choice_id}`
+    )
+  ),
+};

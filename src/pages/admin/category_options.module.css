@@ -1,0 +1,8 @@
+.customizationOptionName input{
+    color: var(--text-muted);
+    font-size: var(--text-large);
+    font-weight: bold;;
+}
+.customizationOptionDesc{
+
+}

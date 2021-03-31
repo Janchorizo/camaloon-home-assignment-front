@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 // internal
 import style from './style.module.css';
@@ -13,14 +13,24 @@ import {
   TabSelector,
   TabContainer,
   CustomizationOptionDesc,
+  ModelInput,
 } from 'components';
+import {admin_api} from 'common/api';
+import CategoryOptions from './category_options.js';
 
 
-const mockCategories = [
-  'Bikes',
-  'Components',
-  'Clothes',
-];
+function useProductCategories() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    admin_api.get_categories().then((categories) => {
+      setCategories(categories);
+    });
+  }, []);
+
+  return categories;
+}
+
 
 const adminTabs = [
   'Product characteristics',
@@ -34,6 +44,7 @@ const adminTabs = [
  * @return {React.Component}
  */
 export default function ProductPage() {
+  const categories = useProductCategories();
   const [categoryIdx, setCategoryIdx] = useState(0);
   const [adminTab, setAdminTab] = useState(0);
 
@@ -46,86 +57,25 @@ export default function ProductPage() {
     </div>
     <div id={style['category-links']}>
       <TabSelector selected={categoryIdx}
-        labels={mockCategories}
+        labels={categories.map(d => d.name)}
         onChange={e => setCategoryIdx(e.target.value)}/>
       <Button filled={true}>Add product type</Button>
     </div>
     <div className={style.spacer}/>
     <TwoThirdsLayout>
       <div>
-        <h1>{mockCategories[categoryIdx]}</h1>
+        <h1>
+          <ModelInput value={categories[categoryIdx]?.name}/>
+        </h1>
         <TabSelector selected={adminTab}
           labels={adminTabs}
           onChange={e => setAdminTab(e.target.value)}/>
         <TabContainer selectedIdx={adminTab}>
           <div id={style['specs']}>
             <Section title='Description'>
-              <textarea></textarea>
+              <ModelInput value={categories[categoryIdx]?.description}/>
             </Section>
-            <Section title='Customization options'>
-              <ItemList useSeparator={true}>
-                <div>
-                  <CustomizationOptionDesc name='Wheel size'
-                    desc={`
-                        Small with fast response or large to better keep the momentum,
-                        customize your bike with the wheel size that better fits your
-                        needs (the extra cost includes the wheel price difference and
-                        the cost of a larger frame and fork to accomodate the wheel).
-                      `}/>
-                  <p>
-                    There are 12 choices for this customization option.
-                  </p>
-                  <DoubleButton label1='Add an option choice'
-                    onClick1={() => {
-                      console.log('Added factory model');
-                    }}
-                    label2='List the existing choices'
-                    onClick2={() => {
-                      console.log('Customizing model');
-                    }}/>
-                </div>
-                <div>
-                  <CustomizationOptionDesc name='Wheel size'
-                    desc={`
-                        Small with fast response or large to better keep the momentum,
-                        customize your bike with the wheel size that better fits your
-                        needs (the extra cost includes the wheel price difference and
-                        the cost of a larger frame and fork to accomodate the wheel).
-                      `}/>
-                  <p>
-                    There are 12 choices for this customization option.
-                  </p>
-                  <DoubleButton label1='Add an option choice'
-                    onClick1={() => {
-                      console.log('Added factory model');
-                    }}
-                    label2='List the existing choices'
-                    onClick2={() => {
-                      console.log('Customizing model');
-                    }}/>
-                </div>
-                <div>
-                  <CustomizationOptionDesc name='Wheel size'
-                    desc={`
-                        Small with fast response or large to better keep the momentum,
-                        customize your bike with the wheel size that better fits your
-                        needs (the extra cost includes the wheel price difference and
-                        the cost of a larger frame and fork to accomodate the wheel).
-                      `}/>
-                  <p>
-                    There are 12 choices for this customization option.
-                  </p>
-                  <DoubleButton label1='Add an option choice'
-                    onClick1={() => {
-                      console.log('Added factory model');
-                    }}
-                    label2='List the existing choices'
-                    onClick2={() => {
-                      console.log('Customizing model');
-                    }}/>
-                </div>
-              </ItemList>
-            </Section>
+            <CategoryOptions categoryId={categories[categoryIdx]?.id}/>
           </div>
           <div id={style['products']}>
             <div>

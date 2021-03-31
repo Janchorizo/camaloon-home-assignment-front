@@ -14,6 +14,7 @@ module.exports = {
       common: path.resolve(__dirname, "src/common"),
       pages: path.resolve(__dirname, "src/pages"),
       components: path.resolve(__dirname, "src/components"),
+      env: stage === 'dev' ? path.resolve(__dirname, "env_dev.js") : path.resolve(__dirname, "env_prod.js")
     }
   },
   module: {
@@ -46,7 +47,7 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    port: 3000,
+    port: 5000,
     host: '0.0.0.0',
     contentBase: './static',
     publicPath: '/',

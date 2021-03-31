@@ -11,8 +11,9 @@ import style from './style.module.css';
  */
 export default function ModelInput({
   value='',
+  textArea=false,
   updateEndpoint,
-  onSubmit,
+  commitCallback,
   ...props
 }) {
   const [currentValue, setCurrentValue] = useState(value);
@@ -29,13 +30,19 @@ export default function ModelInput({
     {value == currentValue ? '' : (
       <div className={style.changeButtons}>
         <button onClick={() => setCurrentValue(value)}>Undo changes</button>
-        <button onClick={() => onCommit(currentValue)}>Commit changes</button>
+        <button onClick={() => commitCallback(currentValue)}>Commit changes</button>
       </div>
     )}
-    <input
-      value={currentValue}
-      onChange={e => setCurrentValue(e.target.value)}
-      {...props}/>
+    {textArea === false 
+      ? <input
+        value={currentValue}
+        onChange={e => setCurrentValue(e.target.value)}
+        {...props}/>
+      : <textarea
+          value={currentValue}
+          onChange={e => setCurrentValue(e.target.value)}
+          {...props}/>
+    }
   </div>;
 }
 

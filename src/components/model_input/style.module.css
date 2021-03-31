@@ -3,36 +3,41 @@
 }
 .edited{
     border-top: solid 1px var(--red);
-    margin-top: 2em;
+    margin-top: calc(2 * var(--text-medium));
 }
 .edited::after{
     content: 'Edited';
     display: block;
     color: var(--red);
     position: absolute;
-    top: calc(0px - 1em - 5px);
-    left: .5em;
+    top: calc(0px - var(--text-medium) - 5px);
+    left: calc(.5 * var(--text-medium));
     background: white;
     padding: 3px 3px 0 3px;
     border: solid 1px var(--red);
     border-bottom: 0;
+    font-size: var(--text-medium);
+    font-weight: normal;
 }
-.modelInput input{
+.modelInput input,
+.modelInput textarea{
     display: block;
     width: 100%;
-    padding: .5rem;
+    min-width: 100%;
+    max-width: 100%;
+    padding: calc(.5 * var(--text-medium));
     background-color: white;
     border: solid 1px var(--light);
 }
 .changeButtons{
     position: absolute;
-    top: calc(0px - 2em);
+    top: calc(0px - calc(2 * var(--text-medium)));
     right: 0;
 }
 .changeButtons button{
     background: none;
     border: none;
-    margin: .5em;
+    margin: calc(.5 * var(--text-medium));
     font-size: var(--text-small);
     cursor: pointer;
     font-weight: bold;

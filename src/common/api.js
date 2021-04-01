@@ -166,6 +166,13 @@ export const admin_api = {
       ({category_id, product_id}) => `/admin/categories/${category_id}/products/${product_id}`
     )
   ),
+  get_product_choices: create_endpoint(
+    get,
+    create_url_builder(
+      ['category_id', 'product_id'],
+      ({category_id, product_id}) => `/admin/categories/${category_id}/products/${product_id}/choices`
+    )
+  ),
   get_category_options: create_endpoint(
     get,
     create_url_builder(

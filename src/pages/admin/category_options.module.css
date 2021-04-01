@@ -1,8 +1,26 @@
+.customizationOptionName{
+    display: flex;
+}
+.customizationOptionName > div{
+    flex-grow: 1;
+}
 .customizationOptionName input{
     color: var(--text-muted);
     font-size: var(--text-large);
-    font-weight: bold;;
+    font-weight: bold;
 }
 .customizationOptionDesc{
 
+}
+.optionDeleteButton{
+    display: block;
+    border: none;
+    padding: 0 var(--space-small);
+    margin-left: var(--space-small);
+    cursor: pointer;
+}
+.optionDeleteButton:hover{
+    font-weight: bold;
+    color: var(--white);
+    background-color: var(--red);
 }

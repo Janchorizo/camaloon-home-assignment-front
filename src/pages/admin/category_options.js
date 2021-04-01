@@ -33,14 +33,45 @@ function useCategoryOptions(categoryId) {
     fetchOptions(categoryId);
   }, [categoryId]);
 
-  return [options, fetchOptions];
+  return [options, setOptions, fetchOptions];
 }
 
 export default function CategoryOptions({
   categoryId,
 }){
-  const [options, fetchOptions] = useCategoryOptions(categoryId);
-  console.log(categoryId, options);
+  const [options, setOptions, fetchOptions] = useCategoryOptions(categoryId);
+  
+  function createOption() {
+    admin_api.create_category_option({category_id: categoryId})
+      .then(response => {
+        if (response.status_code == 200) {
+          setOptions(response.options);
+        }
+      })
+  }
+
+  function updateOption(id, attr, value) {
+    admin_api.update_category_option(
+        {category_id: categories[categoryIdx].id},
+        {option_id: id},
+        {[attr]: value}).then(response => {
+      if (response.status_code == 200) {
+        const updatedCategories = [...categories];
+        updatedCategories[categoryIdx] = response.category;
+        setCategories(updatedCategories);
+      }
+    });
+  }
+
+  function deleteOption(optionId) {
+    admin_api.delete_category_option({category_id: categoryId, option_id: optionId})
+      .then(response => {
+        console.log(response)
+        if (response.status_code == 200) {
+          setOptions(response.options);
+        }
+      })
+  }
 
   return(
     <Section title='Customization options'>
@@ -50,7 +81,13 @@ export default function CategoryOptions({
             <span className={style.customizationOptionName}>
               <ModelInput
                 value={option.name}
+                commitCallback={newValue => updateOption('name', newValue)}
                 commitCallback={newName => {admin_api.update_option({}, {name: newName})}}/>
+              <button
+                  onClick={() => deleteOption(option.id)}
+                  className={style.optionDeleteButton}>
+                Delete this option
+              </button>
             </span>
             <br/>
             <i>Description:</i>

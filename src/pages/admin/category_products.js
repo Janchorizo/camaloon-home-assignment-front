@@ -45,6 +45,7 @@ export default function CategoryProducts({
 }){
   const [products, setProducts, fetchProducts] = useProducts(categoryId);
   const [deletingProduct, setDeletingProduct] = useState(false);
+  const [togglingProduct, setTogglingProduct] = useState(false);
   const [productIdx, setProductIdx] = useState(0);
   useEffect(() => {
     const idx = Math.min(productIdx, products.length);
@@ -92,6 +93,15 @@ export default function CategoryProducts({
     }
   }
 
+  function toggleProductVisibility() {
+    if (togglingProduct === false) {
+      setTogglingProduct(true);
+      setTimeout(() => setTogglingProduct(false), 1000);
+    } else {
+      updateProduct('hidden', !product.hidden)
+    }
+  }
+
   return <div>
     <Button
         filled={true}
@@ -105,6 +115,24 @@ export default function CategoryProducts({
       pageCount={products.length}
       onChange={page => setProductIdx(page)}/>
     <h2>{product?.name}</h2>
+    <div
+        id={style['toggle-product']}
+        className={togglingProduct === false ? '' : style.togglingProduct}>
+      <Button
+          textSizeClass='text-small'
+          onClick={toggleProductVisibility}>
+        Toggle the visibility
+      </Button>
+      <p>
+        <b>The product is currently {product?.hidden === false ? 'VISIBLE' : 'HIDDEN'}</b>
+        <br/>
+        <i>
+          Making the category visible will show it in the shop. This action is
+          reversible but people will be able to navigate through the product
+          category until they refresh the page. 
+        </i>
+      </p>
+    </div>
     <div
         id={style['delete-product']}
         className={deletingProduct === false ? '' : style.deletingProduct}>

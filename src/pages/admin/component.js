@@ -96,6 +96,18 @@ export default function ProductPage() {
     }
   }
 
+  function updateCategory(attr, value) {
+    admin_api.update_category(
+        {category_id: categories[categoryIdx].id},
+        {[attr]: value}).then(response => {
+      if (response.status_code == 200) {
+        const updatedCategories = [...categories];
+        updatedCategories[categoryIdx] = response.category;
+        setCategories(updatedCategories);
+      }
+    });
+  }
+
   return <PageLayout headerBgColor={'var(--dark)'}
       footerBgColor={'var(--light)'}
       id={style.page}>
@@ -117,7 +129,9 @@ export default function ProductPage() {
     <TwoThirdsLayout>
       <div>
         <h1>
-          <ModelInput value={categories[categoryIdx]?.name}/>
+          <ModelInput
+            commitCallback={newValue => updateCategory('name', newValue)}
+            value={categories[categoryIdx]?.name}/>
         </h1>
         <TabSelector selected={adminTab}
           labels={adminTabs}
@@ -125,7 +139,9 @@ export default function ProductPage() {
         <TabContainer selectedIdx={adminTab}>
           <div id={style['specs']}>
             <Section title='Description'>
-              <ModelInput value={categories[categoryIdx]?.description}/>
+              <ModelInput
+                commitCallback={newValue => updateCategory('description', newValue)}
+                value={categories[categoryIdx]?.description}/>
             </Section>
             <CategoryOptions categoryId={categories[categoryIdx]?.id}/>
           </div>

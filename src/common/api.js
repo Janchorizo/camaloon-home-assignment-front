@@ -19,7 +19,7 @@ function post(url, body) {
     fetchOptions.headers = {
       'Content-Type': 'application/json;charset=utf-8'
     };
-    fetchOptions.body = JSON.stringify(user);
+    fetchOptions.body = JSON.stringify(body);
   }
 
   return new Promise((resolve, reject) => {
@@ -40,7 +40,7 @@ function put(url, body) {
     fetchOptions.headers = {
       'Content-Type': 'application/json;charset=utf-8'
     };
-    fetchOptions.body = JSON.stringify(user);
+    fetchOptions.body = JSON.stringify(body);
   }
 
   return new Promise((resolve, reject) => {
@@ -61,7 +61,7 @@ function destroy(url, body) {
     fetchOptions.headers = {
       'Content-Type': 'application/json;charset=utf-8'
     };
-    fetchOptions.body = JSON.stringify(user);
+    fetchOptions.body = JSON.stringify(body);
   }
 
   return new Promise((resolve, reject) => {
@@ -220,7 +220,72 @@ export const admin_api = {
     post,
     create_url_builder(
       ['category_id', 'product_id'],
-      ({category_id, option_id, choice_id}) => `/admin/categories/${category_id}/products/${product_id}/choices`
+      ({category_id, product_id}) => `/admin/categories/${category_id}/products/${product_id}/choices`
+    )
+  ),
+  // DELETE
+  delete_category: create_endpoint(
+    destroy,
+    create_url_builder(
+      ['category_id'],
+      ({category_id}) => `/admin/categories/${category_id}`
+    )
+  ),
+  delete_product: create_endpoint(
+    destroy,
+    create_url_builder(
+      ['category_id', 'product_id'],
+      ({category_id, product_id}) => `/admin/categories/${category_id}/products/${product_id}`
+    )
+  ),
+  delete_category_option: create_endpoint(
+    destroy,
+    create_url_builder(
+      ['category_id', 'option_id'],
+      ({category_id, option_id}) => `/admin/categories/${category_id}/options/${option_id}`
+    )
+  ),
+  delete_option_choice: create_endpoint(
+    destroy,
+    create_url_builder(
+      ['category_id', 'option_id', 'choice_id'],
+      ({category_id, option_id, choice_id}) => `/admin/categories/${category_id}/options/${option_id}/choices/${choice_id}`
+    )
+  ),
+  create_choice_line: create_endpoint(
+    destroy,
+    create_url_builder(
+      ['category_id', 'product_id', 'choice_id'],
+      ({category_id, product_id, choice_id}) => `/admin/categories/${category_id}/products/${product_id}/choices/${choice_id}`
+    )
+  ),
+  // PUT
+  update_category: create_endpoint(
+    put,
+    create_url_builder(
+      ['category_id'],
+      ({category_id}) => `/admin/categories/${category_id}`
+    )
+  ),
+  update_product: create_endpoint(
+    put,
+    create_url_builder(
+      ['category_id', 'product_id'],
+      ({category_id, product_id}) => `/admin/categories/${category_id}/products/${product_id}`
+    )
+  ),
+  update_category_option: create_endpoint(
+    put,
+    create_url_builder(
+      ['category_id', 'option_id'],
+      ({category_id, option_id}) => `/admin/categories/${category_id}/options/${option_id}`
+    )
+  ),
+  update_option_choice: create_endpoint(
+    put,
+    create_url_builder(
+      ['category_id', 'option_id', 'choice_id'],
+      ({category_id, option_id, choice_id}) => `/admin/categories/${category_id}/options/${option_id}/choices/${choice_id}`
     )
   ),
 };

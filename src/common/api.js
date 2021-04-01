@@ -187,4 +187,40 @@ export const admin_api = {
       ({category_id, option_id, choice_id}) => `/admin/categories/${category_id}/options/${option_id}/choices/${choice_id}`
     )
   ),
+  // POST
+  create_category: create_endpoint(
+    post,
+    create_url_builder(
+      [],
+      () => `/admin/categories`
+    )
+  ),
+  create_product: create_endpoint(
+    post,
+    create_url_builder(
+      ['category_id'],
+      ({category_id}) => `/admin/categories/${category_id}/products`
+    )
+  ),
+  create_category_option: create_endpoint(
+    post,
+    create_url_builder(
+      ['category_id'],
+      ({category_id}) => `/admin/categories/${category_id}/options`
+    )
+  ),
+  create_option_choice: create_endpoint(
+    post,
+    create_url_builder(
+      ['category_id', 'option_id'],
+      ({category_id, option_id}) => `/admin/categories/${category_id}/options/${option_id}/choices`
+    )
+  ),
+  create_choice_line: create_endpoint(
+    post,
+    create_url_builder(
+      ['category_id', 'product_id'],
+      ({category_id, option_id, choice_id}) => `/admin/categories/${category_id}/products/${product_id}/choices`
+    )
+  ),
 };

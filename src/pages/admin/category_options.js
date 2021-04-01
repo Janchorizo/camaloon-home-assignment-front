@@ -21,10 +21,12 @@ import {admin_api} from 'common/api';
 function useCategoryOptions(categoryId) {
   const [options, setOptions] = useState([]);
 
-  function fetchOptions(id){
+  function fetchOptions(){
     if (categoryId != undefined) {
-      admin_api.get_category_options({category_id: id}).then((options) => {
-        setOptions(options);
+      admin_api.get_category_options({category_id: categoryId}).then((response) => {
+        if (response.status_code == 200) {
+          setOptions(response.options);
+        }
       });
     }
   }
@@ -52,13 +54,10 @@ export default function CategoryOptions({
 
   function updateOption(id, attr, value) {
     admin_api.update_category_option(
-        {category_id: categories[categoryIdx].id},
-        {option_id: id},
+        {category_id: categoryId, option_id: id},
         {[attr]: value}).then(response => {
       if (response.status_code == 200) {
-        const updatedCategories = [...categories];
-        updatedCategories[categoryIdx] = response.category;
-        setCategories(updatedCategories);
+        fetchOptions()
       }
     });
   }
@@ -85,8 +84,7 @@ export default function CategoryOptions({
             <span className={style.customizationOptionName}>
               <ModelInput
                 value={option.name}
-                commitCallback={newValue => updateOption('name', newValue)}
-                commitCallback={newName => {admin_api.update_option({}, {name: newName})}}/>
+                commitCallback={newValue => updateOption(option.id, 'name', newValue)}/>
               <button
                   onClick={() => deleteOption(option.id)}
                   className={style.optionDeleteButton}>
@@ -99,7 +97,7 @@ export default function CategoryOptions({
               <ModelInput
                 value={option.description}
                 textArea={true}
-                commitCallback={newName => {admin_api.update_option({}, {name: newName})}}/>
+                commitCallback={newValue => updateOption(option.id, 'description', newValue)}/>
             </span>
             <p>
               There are 12 choices for this customization option.

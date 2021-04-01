@@ -47,6 +47,8 @@ export default function ModelInput({
 }
 
 ModelInput.propTypes = {
-  value: PropTypes.string
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number])
 };
 

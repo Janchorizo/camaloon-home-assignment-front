@@ -23,7 +23,7 @@ function post(url, body) {
   }
 
   return new Promise((resolve, reject) => {
-    window.fetch(url)
+    window.fetch(url, fetchOptions)
       .then((res) => res.json())
       .then((jsonRes) => {
         resolve(jsonRes);
@@ -44,7 +44,7 @@ function put(url, body) {
   }
 
   return new Promise((resolve, reject) => {
-    window.fetch(url)
+    window.fetch(url, fetchOptions)
       .then((res) => res.json())
       .then((jsonRes) => {
         resolve(jsonRes);
@@ -65,7 +65,7 @@ function destroy(url, body) {
   }
 
   return new Promise((resolve, reject) => {
-    window.fetch(url)
+    window.fetch(url, fetchOptions)
       .then((res) => res.json())
       .then((jsonRes) => {
         resolve(jsonRes);

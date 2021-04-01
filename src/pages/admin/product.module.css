@@ -1,0 +1,19 @@
+#product-header{
+    margin: var(--space-medium) 0;
+}
+#product-header b{
+    color: var(--text-muted);
+}
+#delete-product{
+    margin: var(--space-small) 0;
+}
+.deletingProduct button{
+    background-color: var(--red);
+    font-weight: bold;
+    color: var(--white);
+}
+.deletingProduct button:hover{
+    background-color: var(--red);
+    font-weight: bold;
+    color: var(--white);
+}

@@ -156,14 +156,14 @@ export default function ProductPage() {
             id={style['toggle-category-visibility']}
             className={togglingVisibility === false ? '' : style.togglingCategoryVisibility}>
           <b>
-            The product is currently {categories[categoryIdx]?.hidden === false ? 'VISIBLE' : 'HIDDEN'}
+            The category is currently {categories[categoryIdx]?.hidden === false ? 'VISIBLE' : 'HIDDEN'}
           </b>
           <Button onClick={toogleCategoryVisibility}>
             Toggle the visibility
           </Button>
           <p>
             <i>
-              Making the product visible will show it in the shop. This action is
+              Making the category visible will show it in the shop. This action is
               reversible but people will be able to navigate through the product
               category until they refresh the page. 
             </i>
@@ -174,7 +174,7 @@ export default function ProductPage() {
             id={style['delete-category']}
             className={deletingCategory === false ? '' : style.deletingCategory}>
           <Button onClick={deleteCategory}>
-            Delete this product type
+            Delete this category
           </Button>
           <p>
             <i>

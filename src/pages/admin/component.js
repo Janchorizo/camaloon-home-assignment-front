@@ -50,6 +50,8 @@ export default function ProductPage() {
   const [categories, setCategories] = useProductCategories();
   const [categoryIdx, setCategoryIdx] = useState(0);
   const [adminTab, setAdminTab] = useState(0);
+  const [deletingCategory, setDeletingCategory] = useState(false)
+  const [togglingVisibility, setTogglingVisibility] = useState(false)
 
   function createCategory() {
     admin_api.create_category().then(response => {
@@ -57,6 +59,41 @@ export default function ProductPage() {
         setCategories(response.categories);
       }
     });
+  }
+
+  function deleteCategory() {
+    if (deletingCategory === false) {
+      setDeletingCategory(true);
+      setTimeout(() => setDeletingCategory(false), 1000);
+    } else {
+      admin_api.delete_category({category_id: categories[categoryIdx].id}).then(response => {
+        if (response.status_code == 200 && response.categories.length < categories.length) {
+          setCategories(response.categories);
+          setDeletingCategory(false)
+          if (categoryIdx == response.categories.length) {
+            setCategoryIdx(response.categories.length -1);
+          }
+        }
+      });
+    }
+  }
+
+  function toogleCategoryVisibility() {
+    if (togglingVisibility === false) {
+      setTogglingVisibility(true);
+      setTimeout(() => setTogglingVisibility(false), 1000);
+    } else {
+      admin_api.update_category(
+          {category_id: categories[categoryIdx].id},
+          {hidden: !categories[categoryIdx].hidden}).then(response => {
+        if (response.status_code == 200) {
+          const updatedCategories = [...categories];
+          updatedCategories[categoryIdx] = response.category;
+          setCategories(updatedCategories);
+          setTogglingVisibility(false)
+        }
+      });
+    }
   }
 
   return <PageLayout headerBgColor={'var(--dark)'}
@@ -96,6 +133,39 @@ export default function ProductPage() {
             <CategoryProducts categoryId={categories[categoryIdx]?.id}/>
           </div>
         </TabContainer>
+      </div>
+      <div>
+      <div
+            id={style['toggle-category-visibility']}
+            className={togglingVisibility === false ? '' : style.togglingCategoryVisibility}>
+          <b>
+            The product is currently {categories[categoryIdx]?.hidden === false ? 'VISIBLE' : 'HIDDEN'}
+          </b>
+          <Button onClick={toogleCategoryVisibility}>
+            Toggle the visibility
+          </Button>
+          <p>
+            <i>
+              Making the product visible will show it in the shop. This action is
+              reversible but people will be able to navigate through the product
+              category until they refresh the page. 
+            </i>
+          </p>
+        </div>
+        <hr className={style.asideHr}/>
+        <div
+            id={style['delete-category']}
+            className={deletingCategory === false ? '' : style.deletingCategory}>
+          <Button onClick={deleteCategory}>
+            Delete this product type
+          </Button>
+          <p>
+            <i>
+              Deleting this product category will also delete any customization option
+              and products associated with it.
+            </i>
+          </p>
+        </div>
       </div>
     </TwoThirdsLayout>
     <span>

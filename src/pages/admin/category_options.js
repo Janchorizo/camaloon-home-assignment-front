@@ -75,6 +75,10 @@ export default function CategoryOptions({
 
   return(
     <Section title='Customization options'>
+      <div></div>
+      <Button onClick={() => createOption()} textSizeClass='text-small'>
+        Create customization option
+      </Button>
       <ItemList useSeparator={true}>
         {options.map((option, i) => (
           <div key={i}>

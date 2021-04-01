@@ -140,6 +140,7 @@ export default function ProductPage() {
           <div id={style['specs']}>
             <Section title='Description'>
               <ModelInput
+                textArea={true}
                 commitCallback={newValue => updateCategory('description', newValue)}
                 value={categories[categoryIdx]?.description}/>
             </Section>

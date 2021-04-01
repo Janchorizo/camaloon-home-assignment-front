@@ -36,7 +36,7 @@ function useCategoryProducts(category_id) {
   useEffect(() => {
     if (category_id != undefined) {
       shop_api.get_category_products({category_id: category_id}).then((d) => {
-        setProducts(d.products);
+        setProducts(d.products.map(d => d.id));
       });
     }
   }, [category_id]);
@@ -85,6 +85,7 @@ export default function ProductPage() {
   const categories = useProductCategories();
   const productIds = useCategoryProducts(category_id);
   const product = useProduct(product_id);
+  const product_idx = product && productIds ? productIds.indexOf(+product_id) : -1;
   const factoryModel = useFactoryModel(product_id);
   const factoryModelCost = (product != null && factoryModel != null
     ? product.base_price + factoryModel.customization_options.reduce((ac, dc) => ac+dc.extra_cost, 0)
@@ -94,11 +95,17 @@ export default function ProductPage() {
   if (category_id == undefined && categories.length > 0) {
     history.push(`/product/${categories[0].id}`);
   } else if (product_id == undefined && productIds.length > 0) {
-    history.push(`/product/${category_id}/${productIds[0].id}`);
+    history.push(`/product/${category_id}/${productIds[0]}`);
   }
 
   const categoryLinks = categories.map((c, i) =>
     <Link key={i} to={`/product/${c.id}`}>{c.name}</Link>);
+  const prevProductUrl = (product_idx === -1 || product_idx == 0
+    ? null
+    : `/product/${category_id}/${productIds[product_idx - 1]}`);
+  const nextProductUrl = (product_idx === .1 || product_idx == productIds.length - 1
+    ? null
+    : `/product/${category_id}/${productIds[product_idx +1]}`);
 
   return <PageLayout headerBgColor={'var(--dark)'}
       footerBgColor={'var(--light)'}
@@ -110,6 +117,16 @@ export default function ProductPage() {
       {categoryLinks}
     </div>
     <hr/>
+
+    <div id={style['product-links']}>
+      {prevProductUrl == null ? '' :
+        <Link id={style.prev} to={prevProductUrl}>🡸 Previous</Link>
+      }
+      {nextProductUrl == null ? '' :
+        <Link id={style.next} to={nextProductUrl}>Next 🡺</Link>
+      }
+    </div>
+
     <TwoThirdsLayout>
       <img id={style['product-img']}/>
       <div className={style.spacer}/>
@@ -166,7 +183,7 @@ export default function ProductPage() {
         <p>
           {product?.description}
         </p>
-        <id id={style['factory-model']}>
+        <div id={style['factory-model']}>
           <ItemList gapSizeClass='--space-small'>
             <b>Get the factory model</b>
             <p>
@@ -192,7 +209,7 @@ export default function ProductPage() {
               verticalLayout={true}
               textSizeClass='text-large'/>
           </ItemList>
-        </id>
+        </div>
       </Section>
     </TwoThirdsLayout>
     <div className={style.spacer}/>

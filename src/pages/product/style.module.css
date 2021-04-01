@@ -66,3 +66,15 @@
 #factory-model > div > div:last-child{
     text-align: center;
 }
+#product-links{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-small);
+}
+#product-links a{
+    text-decoration: none;
+}
+#next{
+    align-self: end;
+    margin-left: auto;
+}

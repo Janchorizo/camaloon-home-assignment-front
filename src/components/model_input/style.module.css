@@ -22,9 +22,9 @@
 .modelInput input,
 .modelInput textarea{
     display: block;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
+    width: calc(100% - var(--text-medium));
+    min-width: calc(100% - var(--text-medium));
+    max-width: calc(100% - var(--text-medium));
     padding: calc(.5 * var(--text-medium));
     background-color: white;
     border: solid 1px var(--light);

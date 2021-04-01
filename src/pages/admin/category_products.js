@@ -17,6 +17,7 @@ import {
   Paginator,
 } from 'components';
 import {admin_api} from 'common/api';
+import ProductCustomizationChoices from './product_customization_choices';
 
 
 function useProducts(categoryId) {
@@ -161,122 +162,7 @@ export default function CategoryProducts({
         value={product?.description}/>
     </div>
     <Section id={style['product-choices']} title='Customization options'>
-      <ItemList useSeparator={true}>
-        <Subsection title='Wheel size'>
-        <Button filled={true}>Add choice</Button>
-          <ItemList stripped={true}>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-          </ItemList>
-        </Subsection>
-        <Subsection title='Wheel size'>
-          <Button filled={true}>Add choice</Button>
-          <ItemList stripped={true}>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-          </ItemList>
-        </Subsection>
-        <Subsection title='Wheel size'>
-          <Button filled={true}>Add choice</Button>
-          <ItemList stripped={true}>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-            <div className={style.choice}>
-              <span>
-                <b>Fox Fork...</b>
-                <i> (model ref.: xxx)</i>
-                <br/>
-                <i>Fox</i>
-              </span>
-              <b>
-                0.0€
-              </b>
-            </div>
-          </ItemList>
-        </Subsection>
-      </ItemList>
-      </Section>
+      <ProductCustomizationChoices categoryId={categoryId} productId={product?.id} />
+    </Section>
   </div>
 }

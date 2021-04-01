@@ -10,3 +10,4 @@ export {default as TabSelector} from './tab_selector';
 export {default as TabContainer} from './tab_container';
 export {default as CustomizationOptionDesc} from './customization_option_desc';
 export {default as ModelInput} from './model_input';
+export {default as Paginator} from './paginator';

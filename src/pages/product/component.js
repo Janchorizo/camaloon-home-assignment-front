@@ -179,7 +179,7 @@ export default function ProductPage() {
         </ItemList>
       </Section>
       <Section id={style['side-bar']} title={category_id + ' supplier'}>
-        <h2>{product?.name} (id: {product?.id})</h2>
+        <h2>{product?.name}</h2>
         <p>
           {product?.description}
         </p>

@@ -54,10 +54,8 @@ export default function ProductCustomizationChoices({
 }){
   const [choices, setChoices, fetchChoices] = useProductChoices(categoryId, productId);
 
-  console.log(choices, categoryId, productId)
-
   const customizationTypes = Object.keys(choices).map(choiceType => (
-    <Subsection title={choiceType}>
+    <Subsection key={choiceType} title={choiceType}>
       <Button filled={true}>Add choice</Button>
       <ItemList stripped={true}>
         {choices[choiceType].map(choice => (

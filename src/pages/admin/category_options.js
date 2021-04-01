@@ -16,6 +16,7 @@ import {
   ModelInput,
 } from 'components';
 import {admin_api} from 'common/api';
+import OptionChoicesModal from './optionChoicesModal';
 
 
 function useCategoryOptions(categoryId) {
@@ -38,11 +39,13 @@ function useCategoryOptions(categoryId) {
   return [options, setOptions, fetchOptions];
 }
 
+
 export default function CategoryOptions({
   categoryId,
 }){
   const [options, setOptions, fetchOptions] = useCategoryOptions(categoryId);
-  
+  const [focusedOption, setFocusedOption] = useState(null);
+
   function createOption() {
     admin_api.create_category_option({category_id: categoryId})
       .then(response => {
@@ -65,7 +68,6 @@ export default function CategoryOptions({
   function deleteOption(optionId) {
     admin_api.delete_category_option({category_id: categoryId, option_id: optionId})
       .then(response => {
-        console.log(response)
         if (response.status_code == 200) {
           setOptions(response.options);
         }
@@ -75,6 +77,11 @@ export default function CategoryOptions({
   return(
     <Section title='Customization options'>
       <div></div>
+      <OptionChoicesModal
+        categoryId={categoryId}
+        optionId={focusedOption?.id}
+        exitCallback={() => setFocusedOption(null)}
+        optionName={focusedOption?.name}/>
       <Button onClick={() => createOption()} textSizeClass='text-small'>
         Create customization option
       </Button>
@@ -100,82 +107,14 @@ export default function CategoryOptions({
                 commitCallback={newValue => updateOption(option.id, 'description', newValue)}/>
             </span>
             <p>
-              There are 12 choices for this customization option.
+              
             </p>
-            <DoubleButton label1='Add an option choice'
-              onClick1={() => {
-                console.log('Added factory model');
-              }}
-              label2='List the existing choices'
-              onClick2={() => {
-                console.log('Customizing model');
-              }}/>
+            <Button onClick={() => setFocusedOption(option)}>
+              See available choices for this customization option
+            </Button>
           </div>
         ))}
       </ItemList>
     </Section>
   );
 }
-/*
-    <div>
-      <CustomizationOptionDesc name='Wheel size'
-        desc={`
-            Small with fast response or large to better keep the momentum,
-            customize your bike with the wheel size that better fits your
-            needs (the extra cost includes the wheel price difference and
-            the cost of a larger frame and fork to accomodate the wheel).
-          `}/>
-      <p>
-        There are 12 choices for this customization option.
-      </p>
-      <DoubleButton label1='Add an option choice'
-        onClick1={() => {
-          console.log('Added factory model');
-        }}
-        label2='List the existing choices'
-        onClick2={() => {
-          console.log('Customizing model');
-        }}/>
-    </div>
-    <div>
-      <CustomizationOptionDesc name='Wheel size'
-        desc={`
-            Small with fast response or large to better keep the momentum,
-            customize your bike with the wheel size that better fits your
-            needs (the extra cost includes the wheel price difference and
-            the cost of a larger frame and fork to accomodate the wheel).
-          `}/>
-      <p>
-        There are 12 choices for this customization option.
-      </p>
-      <DoubleButton label1='Add an option choice'
-        onClick1={() => {
-          console.log('Added factory model');
-        }}
-        label2='List the existing choices'
-        onClick2={() => {
-          console.log('Customizing model');
-        }}/>
-    </div>
-    <div>
-      <CustomizationOptionDesc name='Wheel size'
-        desc={`
-            Small with fast response or large to better keep the momentum,
-            customize your bike with the wheel size that better fits your
-            needs (the extra cost includes the wheel price difference and
-            the cost of a larger frame and fork to accomodate the wheel).
-          `}/>
-      <p>
-        There are 12 choices for this customization option.
-      </p>
-      <DoubleButton label1='Add an option choice'
-        onClick1={() => {
-          console.log('Added factory model');
-        }}
-        label2='List the existing choices'
-        onClick2={() => {
-          console.log('Customizing model');
-        }}/>
-    </div>
-  </ItemList>
-</Section>*/

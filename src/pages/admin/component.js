@@ -49,7 +49,7 @@ const adminTabs = [
 export default function ProductPage() {
   const [categories, setCategories] = useProductCategories();
   const [categoryIdx, setCategoryIdx] = useState(0);
-  const [adminTab, setAdminTab] = useState(1);
+  const [adminTab, setAdminTab] = useState(0);
   const [deletingCategory, setDeletingCategory] = useState(false)
   const [togglingVisibility, setTogglingVisibility] = useState(false)
 

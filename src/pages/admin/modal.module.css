@@ -1,0 +1,49 @@
+.modal{
+    display: initial;
+    position: fixed;
+    background: #ffffff77;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 20;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.modalContent{
+    background: white;
+    border: solid 2px var(--dark);
+    border-radius: 5px;
+}
+.modalContent h2{
+    margin-left: var(--space-small);
+    font-weight: 100;
+}
+.modalContent > button{
+    margin-left: var(--space-small);
+}
+.modalContent b{
+    display: block;
+    margin-top: var(--space-small);
+    color: var(--text-muted);
+}
+.choice{
+    display: flex;
+}
+.choice > div{
+    flex-grow: 1;
+    margin-right: var(--space-small);
+    padding: var(--space-small);
+    background-color: var(--light);
+}
+.choice > button{
+    margin-top: var(--space-small);
+}
+.choice > button:hover{
+    background-color: var(--red);
+    color: var(--white);
+}
+.closeLink{
+    display: block;
+    padding: var(--space-small);
+}

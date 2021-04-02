@@ -11,5 +11,5 @@ test('div is rendered', () => {
 
   const paginator = wrapper.find('div.paginator');
   expect(paginator).not.toBe(null);
-  expect(paginator.text()).toBe('');
+  expect(paginator.text()).toBe('🡸 PreviousPage 1 of 0Next 🡺');
 });

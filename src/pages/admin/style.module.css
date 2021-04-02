@@ -1,4 +1,7 @@
 #page{}
+.asideHr{
+    margin: 0 var(--space-small);
+}
 .spacer{
     display: block;
     height: var(--space-medium);
@@ -68,4 +71,24 @@
     top: 0;
     right: 0;
     height: var(--space-medium);
+}
+#delete-category,
+#toggle-category-visibility{
+    margin: var(--space-small);
+}
+#toggle-category-visibility b{
+    display: block;
+    margin-bottom: var(--space-small);
+}
+.deletingCategory button,
+.togglingCategoryVisibility button{
+    background-color: var(--red);
+    font-weight: bold;
+    color: var(--white);
+}
+.deletingCategory button:hover,
+.togglingCategoryVisibility button:hover{
+    background-color: var(--red);
+    font-weight: bold;
+    color: var(--white);
 }

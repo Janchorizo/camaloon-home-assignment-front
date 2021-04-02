@@ -21,7 +21,14 @@ export default function Button({
     filled === true ? style.filled : '',
   ].join(' ');
 
-  return <button className={cssClasses} onClick={() => onClick?.()}>
+  const heightStyle = {
+    height: `calc(2.5 * var(--${textSizeClass}))`
+  }
+
+  return <button
+      style={heightStyle}
+      className={cssClasses}
+      onClick={() => onClick?.()}>
     {children}
   </button>;
 }

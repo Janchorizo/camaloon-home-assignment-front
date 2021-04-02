@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 // internal
 import style from './style.module.css';
@@ -11,6 +11,20 @@ import {
   ItemList,
   CustomizationOptionDesc,
 } from 'components';
+import {shop_api} from 'common/api';
+
+
+function useProductCategories() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    shop_api.get_categories().then((d) => {
+      setCategories(d.categories);
+    });
+  }, []);
+
+  return categories;
+}
 
 
 /**
@@ -20,13 +34,22 @@ import {
  */
 export default function HomePage() {
   const history = useHistory();
+  const categories = useProductCategories();
+  const productLink = categories.length == 0 ? '' : '/product/'+categories[0].id;
+
+  const categoryLinks = categories.map((c, i) =>
+    <Link key={i} to={`/product/${c.id}`}>{c.name}</Link>);
 
   return <PageLayout headerBgColor={'var(--dark)'}
     footerBgColor={'var(--light)'}
     id={style.page}>
     <div id={style.header}>
-      <Link to='/'>Online Bike Store</Link>
+      <Link to={productLink}>Online Bike Store</Link>
     </div>
+    <div id={style['category-links']}>
+      {categoryLinks}
+    </div>
+    <hr/>
     <h1>Online Bike Store</h1>
     <h2>Your local store now in the web</h2>
     <img id={style.hero}/>
@@ -34,7 +57,7 @@ export default function HomePage() {
       <Button textSizeClass='text-large'
         filled={true}
         onClick={() => {
-          history.push('/product');
+          history.push(productLink);
         }}>
         See the latest bikes
       </Button>
@@ -69,7 +92,7 @@ export default function HomePage() {
           </p>
           <br/>
           <Button onClick={() => {
-            history.push('/product');
+            history.push(productLink);
           }}>
             Have a look at the discounted bikes
           </Button>
@@ -91,7 +114,7 @@ export default function HomePage() {
             </p>
             <br/>
             <Button onClick={() => {
-              history.push('/product');
+              history.push(productLink);
             }}>
               Have a look at the discounted bikes
             </Button>
@@ -106,7 +129,7 @@ export default function HomePage() {
             </p>
             <br/>
             <Button onClick={() => {
-              history.push('/product');
+              history.push(productLink);
             }}>
               Have a look at the discounted bikes
             </Button>
@@ -121,7 +144,7 @@ export default function HomePage() {
             </p>
             <br/>
             <Button onClick={() => {
-              history.push('/product');
+              history.push(productLink);
             }}>
               Have a look at the discounted bikes
             </Button>
@@ -136,7 +159,7 @@ export default function HomePage() {
             </p>
             <br/>
             <Button onClick={() => {
-              history.push('/product');
+              history.push(productLink);
             }}>
               Have a look at the discounted bikes
             </Button>
@@ -151,7 +174,7 @@ export default function HomePage() {
             </p>
             <br/>
             <Button onClick={() => {
-              history.push('/product');
+              history.push(productLink);
             }}>
               Have a look at the discounted bikes
             </Button>

@@ -1,0 +1,32 @@
+#product-header{
+    margin: var(--space-medium) 0;
+}
+#product-header b{
+    color: var(--text-muted);
+}
+#delete-product,
+#toggle-product{
+    margin: var(--space-small) 0;
+}
+#toggle-product{
+    display: flex;
+}
+#toggle-product button{
+    white-space: nowrap;
+}
+#toggle-product p{
+    margin-top: 0;
+    margin-left: var(--space-small);
+}
+.deletingProduct button,
+.togglingProduct button{
+    background-color: var(--red);
+    font-weight: bold;
+    color: var(--white);
+}
+.deletingProduct button:hover,
+.togglingProduct button:hover{
+    background-color: var(--red);
+    font-weight: bold;
+    color: var(--white);
+}

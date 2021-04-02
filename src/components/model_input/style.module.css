@@ -1,0 +1,55 @@
+.modelInput{
+    position: relative;
+}
+.edited{
+    border-top: solid 1px var(--red);
+    margin-top: calc(2 * var(--text-medium));
+}
+.edited::after{
+    content: 'Edited';
+    display: block;
+    color: var(--red);
+    position: absolute;
+    top: calc(0px - var(--text-medium) - 5px);
+    left: calc(.5 * var(--text-medium));
+    background: white;
+    padding: 3px 3px 0 3px;
+    border: solid 1px var(--red);
+    border-bottom: 0;
+    font-size: var(--text-medium);
+    font-weight: normal;
+}
+.modelInput input,
+.modelInput textarea{
+    display: block;
+    width: calc(100% - var(--text-medium));
+    min-width: calc(100% - var(--text-medium));
+    max-width: calc(100% - var(--text-medium));
+    padding: calc(.5 * var(--text-medium));
+    background-color: white;
+    border: solid 1px var(--light);
+}
+.changeButtons{
+    position: absolute;
+    top: calc(0px - calc(2 * var(--text-medium)));
+    right: 0;
+}
+.changeButtons button{
+    background: none;
+    border: none;
+    margin: calc(.5 * var(--text-medium));
+    font-size: var(--text-small);
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--red);
+}
+.changeButtons button:first-of-type{
+    color: var(--primary);
+}
+.changeButtons button:hover{
+    background: var(--red);
+    color: var(--light);
+}
+.changeButtons button:first-of-type:hover{
+    background: var(--primary);
+}

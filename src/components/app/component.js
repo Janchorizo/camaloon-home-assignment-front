@@ -22,7 +22,10 @@ import {
 export default function App() {
   return <Router>
     <Switch>
-      <Route path="/product/:category/:product_id">
+      <Route path="/product/:category_id/:product_id">
+        <Product />
+      </Route>
+      <Route path="/product/:category_id">
         <Product />
       </Route>
       <Route path="/product">

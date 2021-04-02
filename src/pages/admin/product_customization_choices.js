@@ -17,6 +17,7 @@ import {
   Paginator,
 } from 'components';
 import {admin_api} from 'common/api';
+import ChoiceLinesModal from './choiceLineModal';
 
 
 function useProductChoices(categoryId, productId) {
@@ -53,10 +54,11 @@ export default function ProductCustomizationChoices({
   productId,
 }){
   const [choices, setChoices, fetchChoices] = useProductChoices(categoryId, productId);
+  let [focusedOption, setFocusedOption] = useState(null);
 
   const customizationTypes = Object.keys(choices).map(choiceType => (
     <Subsection key={choiceType} title={choiceType}>
-      <Button filled={true}>Add choice</Button>
+      <Button filled={true} onClick={() => setFocusedOption(choiceType)}>Change choices</Button>
       <ItemList stripped={true}>
         {choices[choiceType].map(choice => (
           <div key={choice.id} className={style.choice}>
@@ -77,6 +79,14 @@ export default function ProductCustomizationChoices({
 
   return (
   <ItemList useSeparator={true}>
+    <ChoiceLinesModal
+        categoryId={categoryId}
+        productId={productId}
+        optionId={choices?.[focusedOption]?.[0]?.type_id}
+        optionName={focusedOption}
+        exitCallback={() => setFocusedOption(null)}
+        fetchCallback={() => fetchChoices()}
+        currentLines={choices?.[focusedOption]}/>
     {customizationTypes}
   </ItemList>);
 }

@@ -266,7 +266,7 @@ export const admin_api = {
       ({category_id, option_id, choice_id}) => `/admin/categories/${category_id}/options/${option_id}/choices/${choice_id}`
     )
   ),
-  create_choice_line: create_endpoint(
+  delete_choice_line: create_endpoint(
     destroy,
     create_url_builder(
       ['category_id', 'product_id', 'choice_id'],
